@@ -13,13 +13,14 @@ export class GameScene extends Phaser.Scene {
       frameRate: 16,
       repeat: 0
     });
-    0;
+
     this.mummySprite = this.add
       .sprite(50, 300, "mummy")
       .setScale(4)
       .play("walk");
-    mummySprite.anims.setRepeat(-1);
+    this.mummySprite.anims.setRepeat(-1);
   }
+
   update() {
     this.mummySprite.x += 1.5;
   }
