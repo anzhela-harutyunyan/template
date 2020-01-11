@@ -10,14 +10,6 @@
 },
 {
 	"filename": "2.png",
-	"frame": {"x":1,"y":55,"w":31,"h":31},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":31},
-	"sourceSize": {"w":31,"h":31}
-},
-{
-	"filename": "3.png",
 	"frame": {"x":28,"y":1,"w":25,"h":25},
 	"rotated": false,
 	"trimmed": false,
@@ -25,7 +17,7 @@
 	"sourceSize": {"w":25,"h":25}
 },
 {
-	"filename": "4.png",
+	"filename": "3.png",
 	"frame": {"x":1,"y":28,"w":25,"h":25},
 	"rotated": false,
 	"trimmed": false,
@@ -33,12 +25,20 @@
 	"sourceSize": {"w":25,"h":25}
 },
 {
-	"filename": "5.png",
+	"filename": "4.png",
 	"frame": {"x":28,"y":28,"w":25,"h":25},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":25},
 	"sourceSize": {"w":25,"h":25}
+},
+{
+	"filename": "cell_bg.png",
+	"frame": {"x":1,"y":55,"w":31,"h":31},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":31},
+	"sourceSize": {"w":31,"h":31}
 }],
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -47,6 +47,6 @@
 	"format": "RGBA8888",
 	"size": {"w":54,"h":87},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:57d9ee122f514a8cc59e443e56041344:530b5c51edada837c7ce95678228ccec:03f91ab73e0f4667800419161e658c40$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9ddb919fdfdd7ba6fee86e3aadca6ad2:e4437acf2359a1baad8815758a014392:03f91ab73e0f4667800419161e658c40$"
 }
 }
