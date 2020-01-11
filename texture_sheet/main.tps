@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser-json-array</string>
         <key>textureFileName</key>
-        <filename>src/assets/atlases/texas.png</filename>
+        <filename>../src/assets/atlases/main.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -74,7 +74,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>0</uint>
+        <uint>1</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -102,7 +102,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -132,7 +132,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>src/assets/atlases/texas.json</filename>
+                <filename>../src/assets/atlases/main.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -149,7 +149,7 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <false/>
+        <true/>
         <key>trimSpriteNames</key>
         <false/>
         <key>prependSmartFolderName</key>
@@ -163,13 +163,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>0</uint>
+            <uint>1</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -181,7 +181,10 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">src/assets/texas/MC_01.png</key>
+            <key type="filename">../src/raw_asset/1.png</key>
+            <key type="filename">../src/raw_asset/3.png</key>
+            <key type="filename">../src/raw_asset/4.png</key>
+            <key type="filename">../src/raw_asset/5.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -190,13 +193,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>80,94,161,189</rect>
+                <rect>6,6,13,13</rect>
                 <key>scale9Paddings</key>
-                <rect>80,94,161,189</rect>
+                <rect>6,6,13,13</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">src/assets/texas/MC_02.png</key>
+            <key type="filename">../src/raw_asset/2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -205,175 +208,23 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>83,104,165,209</rect>
+                <rect>8,8,15,15</rect>
                 <key>scale9Paddings</key>
-                <rect>83,104,165,209</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_03.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>79,96,159,191</rect>
-                <key>scale9Paddings</key>
-                <rect>79,96,159,191</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_04.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>74,103,147,206</rect>
-                <key>scale9Paddings</key>
-                <rect>74,103,147,206</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_05.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>88,107,175,213</rect>
-                <key>scale9Paddings</key>
-                <rect>88,107,175,213</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_06.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>81,120,162,241</rect>
-                <key>scale9Paddings</key>
-                <rect>81,120,162,241</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_07.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>85,93,169,185</rect>
-                <key>scale9Paddings</key>
-                <rect>85,93,169,185</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_08.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>83,115,166,229</rect>
-                <key>scale9Paddings</key>
-                <rect>83,115,166,229</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_09.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>80,84,161,167</rect>
-                <key>scale9Paddings</key>
-                <rect>80,84,161,167</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_10.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>81,95,162,191</rect>
-                <key>scale9Paddings</key>
-                <rect>81,95,162,191</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_11.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>85,103,171,205</rect>
-                <key>scale9Paddings</key>
-                <rect>85,103,171,205</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">src/assets/texas/MC_12.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>88,101,177,202</rect>
-                <key>scale9Paddings</key>
-                <rect>88,101,177,202</rect>
+                <rect>8,8,15,15</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>src/assets/texas</filename>
+            <filename>../src/raw_asset</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
         <array/>
         <key>ignoredWarnings</key>
-        <array>
-            <string>try-pro-features</string>
-        </array>
+        <array/>
         <key>commonDivisorX</key>
         <uint>1</uint>
         <key>commonDivisorY</key>
