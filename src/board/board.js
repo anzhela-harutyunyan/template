@@ -10,14 +10,31 @@ export class Board extends Phaser.GameObjects.Container {
     this._selectedBall = null;
 
     this._buildBoard();
-    this._makeInitialBalls();
+    this._makeBalls();
   }
 
-  getRandomCell() {
+  getRandomEmptyCell() {
     const rndI = Math.floor(Math.random() * BOARD_DIMENSIONS.width);
     const rndJ = Math.floor(Math.random() * BOARD_DIMENSIONS.height);
+    const rndCell = this._cells[rndI][rndJ];
 
-    return this._cells[rndI][rndJ];
+    if (!rndCell.isEmpty) {
+      return this.getRandomEmptyCell();
+    }
+
+    return rndCell;
+  }
+
+  getCellByBall(ball) {
+    for (let i = 0; i < this._cells.length; i++) {
+      const columns = this._cells[i];
+      for (let j = 0; j < columns.length; j++) {
+        const cell = columns[j];
+        if (cell.ball === ball) {
+          return cell;
+        }
+      }
+    }
   }
 
   _buildBoard() {
@@ -37,10 +54,10 @@ export class Board extends Phaser.GameObjects.Container {
     }
   }
 
-  _makeInitialBalls() {
+  _makeBalls() {
     for (let i = 0; i < 3; i++) {
       const ball = this._generateRandomBall();
-      const cell = this.getRandomCell();
+      const cell = this.getRandomEmptyCell();
 
       cell.addBall(ball);
     }
@@ -59,6 +76,12 @@ export class Board extends Phaser.GameObjects.Container {
 
     if (isEmpty) {
       if (this._selectedBall) {
+        const prevCell = this.getCellByBall(this._selectedBall);
+        prevCell.removeBall();
+        cell.addBall(this._selectedBall);
+        this._selectedBall.deselectBall();
+        this._selectedBall = null;
+        this._makeBalls();
       }
     } else {
       if (this._selectedBall) {

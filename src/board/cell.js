@@ -35,6 +35,7 @@ export class Cell extends Phaser.GameObjects.Container {
 
   removeBall() {
     this.remove(this._ball);
+    this._ball = null;
 
     return this._ball;
   }
