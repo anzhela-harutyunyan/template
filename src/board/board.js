@@ -1,3 +1,4 @@
+import PF from "pathfinding";
 import { BOARD_DIMENSIONS } from "../constants";
 import { Ball } from "./ball";
 import { Cell } from "./cell";
@@ -56,7 +57,8 @@ export class Board extends Phaser.GameObjects.Container {
   }
 
   _makeBalls() {
-    for (let i = 0; i < 3; i++) {
+    const emptyCells = this._getEmptyCells();
+    for (let i = 0; i < Math.min(3, emptyCells.length); i++) {
       const ball = this._generateRandomBall();
       const cell = this.getRandomEmptyCell();
 
@@ -90,18 +92,67 @@ export class Board extends Phaser.GameObjects.Container {
 
   _moveBall(newCell) {
     const prevCell = this.getCellByBall(this._selectedBall);
-    prevCell.removeBall();
-    newCell.addBall(this._selectedBall);
-    this._selectedBall.deselectBall();
-    this._selectedBall = null;
-    this._checkForCombination();
-    this._makeBalls();
-    this._checkForCombination();
+    const { col: x1, row: y1 } = prevCell;
+    const { col: x2, row: y2 } = newCell;
 
-    if (this._combinations.length === 0) {
-      this._makeBalls();
+    const path = this._getPath(x1, y1, x2, y2);
+
+    if (path.length !== 0) {
+      prevCell.removeBall();
+      newCell.addBall(this._selectedBall);
+      this._selectedBall.deselectBall();
+      this._selectedBall = null;
       this._checkForCombination();
+
+      if (this._combinations.length === 0) {
+        this._makeBalls();
+        this._checkForCombination();
+        this._checkForLose();
+      }
     }
+  }
+
+  _getEmptyCells() {
+    const emptyCells = [];
+
+    this._cells.forEach(col => {
+      emptyCells.push(...col.filter(cell => cell.isEmpty));
+    });
+    return emptyCells;
+  }
+
+  _checkForLose() {
+    const emptyCells = this._getEmptyCells();
+
+    if (emptyCells.length === 0) {
+      console.log("GameOver");
+    }
+  }
+
+  _getPath(x1, y1, x2, y2) {
+    const matrix = this._getObstacleMatrix();
+    const finder = new PF.AStarFinder();
+    const board = new PF.Grid(matrix);
+
+    const path = finder.findPath(x1, y1, x2, y2, board);
+    console.warn(path);
+
+    return path;
+  }
+
+  _getObstacleMatrix() {
+    const matrix = [];
+
+    for (let y = 0; y < this._cells[0].length; y++) {
+      const row = [];
+      for (let x = 0; x < this._cells.length; x++) {
+        const { isEmpty } = this._cells[x][y];
+        row.push(+!isEmpty);
+      }
+      matrix.push(row);
+    }
+
+    return matrix;
   }
 
   _checkForCombination() {
@@ -125,7 +176,7 @@ export class Board extends Phaser.GameObjects.Container {
       }
     }
 
-    this._collectCombination();
+    this._collectCombinations();
   }
 
   _getHorizontalCombination(ball, col, row, combination) {
@@ -167,6 +218,7 @@ export class Board extends Phaser.GameObjects.Container {
 
     return this._getVerticalCombination(cell.ball, col, row + 1, combination);
   }
+
   _alreadyConsistInCombination(ball) {
     for (let i = 0; i < this._combinations.length; i++) {
       const combination = this._combinations[i];
@@ -179,11 +231,11 @@ export class Board extends Phaser.GameObjects.Container {
     return false;
   }
 
-  _collectCombination() {
+  _collectCombinations() {
     this._combinations.forEach(combination => {
       combination.forEach(ball => {
         const cell = this.getCellByBall(ball);
-        setTimeOut(() => {
+        setTimeout(() => {
           cell.removeBall();
         }, 1000);
       });
